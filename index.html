@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>The Lost Box — Lost it? Find it here.</title>
+  <meta name="description" content="A photo-based campus Lost &amp; Found for Bennett University.">
+  <link rel="icon" href="assets/logo.png">
+  <script>
+    /* apply saved theme before the page paints (no flash) */
+    (function(){var t;try{t=localStorage.getItem("lb-theme")}catch(e){}
+      if(!t){t=window.matchMedia&&matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"}
+      document.documentElement.setAttribute("data-theme",t)})();
+  </script>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<!-- Local icon set (no internet needed) -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></symbol>
+  <symbol id="i-moon" viewBox="0 0 24 24"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></symbol>
+  <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></symbol>
+  <symbol id="i-plus" viewBox="0 0 24 24"><path d="M16 16h6"/><path d="M19 13v6"/><path d="M21 10V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l2-1.14"/><path d="m7.5 4.27 9 5.15"/><polyline points="3.29 7 12 12 20.71 7"/><line x1="12" x2="12" y1="22" y2="12"/></symbol>
+  <symbol id="i-shield" viewBox="0 0 24 24"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/><path d="m9 12 2 2 4-4"/></symbol>
+  <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></symbol>
+  <symbol id="i-box" viewBox="0 0 24 24"><path d="m7.5 4.27 9 5.15"/><path d="M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z"/><path d="m3.3 7 8.7 5 8.7-5"/><path d="M12 22V12"/></symbol>
+  <symbol id="i-leaf" viewBox="0 0 24 24"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"/><path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/></symbol>
+  <symbol id="i-pin" viewBox="0 0 24 24"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></symbol>
+  <symbol id="i-cal" viewBox="0 0 24 24"><rect width="18" height="18" x="3" y="4" rx="2"/><path d="M16 2v4M8 2v4M3 10h18M8 14h.01M12 14h.01M16 14h.01M8 18h.01M12 18h.01M16 18h.01"/></symbol>
+</svg>
+
+<header class="site-header">
+  <div class="nav-wrap">
+    <a href="index.html" class="brand">
+      <img class="brand-logo" src="assets/logo.png" alt="Bennett University logo">
+      <span><strong>The Lost Box</strong><small>Lost it? Find it here.</small></span>
+    </a>
+    <nav>
+      <a href="index.html#inventory"><svg class="ic" width="16" height="16"><use href="#i-search"/></svg> Browse reports</a>
+      <a href="report.html" class="admin-link"><svg class="ic" width="16" height="16"><use href="#i-plus"/></svg> Report item</a>
+      <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Switch between light and dark mode" title="Switch between light and dark mode">
+        <span class="tt-track"><span class="tt-knob"><svg class="ic tt-sun"><use href="#i-sun"/></svg><svg class="ic tt-moon"><use href="#i-moon"/></svg></span></span>
+      </button>
+    </nav>
+  </div>
+</header>
+
+<div id="mode-banner" class="mode-banner" hidden></div>
+<main>
+  <section class="hero">
+    <div class="hero-inner">
+      <div class="eyebrow"><span class="eyebrow-dot"></span> BENNETT UNIVERSITY · LOST &amp; FOUND</div>
+      <h1>Lost something?<br><em>Let’s find it.</em></h1>
+      <p class="hero-copy">A central place to report and browse belongings on the Bennett University campus. Submit a lost or found report with a photo, then search the list to identify your item.</p>
+      <div class="hero-actions">
+        <a href="#inventory" class="button button-primary">Browse reports <svg class="ic" width="17" height="17"><use href="#i-arrow"/></svg></a>
+        <a href="report.html" class="button button-light">Report an item</a>
+      </div>
+      <div class="hero-note"><svg class="ic" width="15" height="15"><use href="#i-shield"/></svg> Always verify ownership before handing an item over.</div>
+      <div class="hero-decoration" aria-hidden="true"><div class="deco-circle"></div><div class="deco-box">?</div><div class="deco-spark">✳</div></div>
+    </div>
+  </section>
+
+  <section class="value-strip">
+    <div><span class="value-icon"><svg class="ic" width="19" height="19"><use href="#i-search"/></svg></span><span><strong>Search visually</strong><small>Browse photos of reported items</small></span></div>
+    <div><span class="value-icon"><svg class="ic" width="19" height="19"><use href="#i-box"/></svg></span><span><strong>Report simply</strong><small>Fill one short form with a photo</small></span></div>
+    <div><span class="value-icon"><svg class="ic" width="19" height="19"><use href="#i-leaf"/></svg></span><span><strong>Reuse, don’t replace</strong><small>Help reduce avoidable waste</small></span></div>
+  </section>
+
+  <section class="inventory-section" id="inventory">
+    <div class="section-heading">
+      <div>
+        <div class="eyebrow">THE INVENTORY</div>
+        <h2>Recently reported items</h2>
+        <p>Newest reports appear first.</p>
+      </div>
+      <span class="count-pill" id="count">…</span>
+    </div>
+    <form class="filters" id="filters">
+      <label class="search-box"><svg class="ic" width="18" height="18"><use href="#i-search"/></svg><input id="q" name="q" placeholder="Search item, description or location..." autocomplete="off"></label>
+      <select id="type" aria-label="Filter by type">
+        <option value="">All reports</option>
+        <option value="Lost">Lost only</option>
+        <option value="Found">Found only</option>
+      </select>
+    </form>
+    <div id="reports"><div class="loading">Loading reports…</div></div>
+  </section>
+
+  <section class="bottom-cta">
+    <div>
+      <div class="eyebrow">CAN’T FIND YOUR BELONGING?</div>
+      <h2>Tell us what you lost.</h2>
+      <p>Submit a report so it can be matched with items that have been found.</p>
+    </div>
+    <a href="report.html" class="button button-primary">Report an item <svg class="ic" width="17" height="17"><use href="#i-arrow"/></svg></a>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div><strong>The Lost Box</strong><p>Reuniting Bennett University students with their belongings.</p></div>
+    <span>Bennett University · Campus project · SDG 12: Responsible Consumption</span>
+  </div>
+</footer>
+
+<script src="js/config.js"></script>
+<script src="js/common.js"></script>
+<script src="js/store.js"></script>
+<script src="js/home.js"></script>
+</body>
+</html>

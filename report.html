@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Report an item — The Lost Box</title>
+  <meta name="description" content="A photo-based campus Lost &amp; Found for Bennett University.">
+  <link rel="icon" href="assets/logo.png">
+  <script>
+    /* apply saved theme before the page paints (no flash) */
+    (function(){var t;try{t=localStorage.getItem("lb-theme")}catch(e){}
+      if(!t){t=window.matchMedia&&matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"}
+      document.documentElement.setAttribute("data-theme",t)})();
+  </script>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<!-- Local icon set (no internet needed) -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></symbol>
+  <symbol id="i-moon" viewBox="0 0 24 24"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></symbol>
+  <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></symbol>
+  <symbol id="i-plus" viewBox="0 0 24 24"><path d="M16 16h6"/><path d="M19 13v6"/><path d="M21 10V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l2-1.14"/><path d="m7.5 4.27 9 5.15"/><polyline points="3.29 7 12 12 20.71 7"/><line x1="12" x2="12" y1="22" y2="12"/></symbol>
+  <symbol id="i-shield" viewBox="0 0 24 24"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/><path d="m9 12 2 2 4-4"/></symbol>
+  <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></symbol>
+  <symbol id="i-box" viewBox="0 0 24 24"><path d="m7.5 4.27 9 5.15"/><path d="M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z"/><path d="m3.3 7 8.7 5 8.7-5"/><path d="M12 22V12"/></symbol>
+  <symbol id="i-leaf" viewBox="0 0 24 24"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"/><path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/></symbol>
+  <symbol id="i-pin" viewBox="0 0 24 24"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></symbol>
+  <symbol id="i-cal" viewBox="0 0 24 24"><rect width="18" height="18" x="3" y="4" rx="2"/><path d="M16 2v4M8 2v4M3 10h18M8 14h.01M12 14h.01M16 14h.01M8 18h.01M12 18h.01M16 18h.01"/></symbol>
+</svg>
+
+<header class="site-header">
+  <div class="nav-wrap">
+    <a href="index.html" class="brand">
+      <img class="brand-logo" src="assets/logo.png" alt="Bennett University logo">
+      <span><strong>The Lost Box</strong><small>Lost it? Find it here.</small></span>
+    </a>
+    <nav>
+      <a href="index.html#inventory"><svg class="ic" width="16" height="16"><use href="#i-search"/></svg> Browse reports</a>
+      <a href="report.html" class="admin-link"><svg class="ic" width="16" height="16"><use href="#i-plus"/></svg> Report item</a>
+      <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Switch between light and dark mode" title="Switch between light and dark mode">
+        <span class="tt-track"><span class="tt-knob"><svg class="ic tt-sun"><use href="#i-sun"/></svg><svg class="ic tt-moon"><use href="#i-moon"/></svg></span></span>
+      </button>
+    </nav>
+  </div>
+</header>
+
+<div id="mode-banner" class="mode-banner" hidden></div>
+<main>
+<div class="page-shell narrow-shell">
+  <a href="index.html" class="back-link"><svg class="ic" width="16" height="16" style="transform:rotate(180deg)"><use href="#i-arrow"/></svg> Back to home</a>
+      <div class="page-title">
+        <div class="eyebrow">LOST OR FOUND SOMETHING?</div>
+        <h1>Report an item</h1>
+        <p>Share a few details so the item can be matched with its owner. Your report appears in the list below.</p>
+      </div>
+      <form class="form-card large-form" id="report-form" novalidate>
+        <div id="form-message" class="form-message" role="status" hidden></div>
+        <h2>Your contact details</h2>
+        <div class="form-row">
+          <label>Student email
+            <input type="email" name="email" value="" maxlength="150" placeholder="name@bennett.edu.in" required>
+          </label>
+          <label>College admission number
+            <input type="text" name="admission_no" value="" maxlength="30" placeholder="e.g. E23CSEU0123" required>
+          </label>
+        </div>
+        <div class="form-divider"></div>
+        <h2>Item details</h2>
+        <div class="form-row">
+          <label>Report type
+            <select name="type" required>
+              <option value="">Select Lost or Found</option>
+              <option value="Lost" >Lost</option>
+              <option value="Found" >Found</option>
+            </select>
+          </label>
+          <label>Item name
+            <input type="text" name="item_name" value="" maxlength="100" placeholder="e.g. Black water bottle" required>
+          </label>
+        </div>
+        <label>Description and identifying details
+          <textarea name="description" rows="4" maxlength="1000" placeholder="Colour, brand, distinctive marks…" required></textarea>
+        </label>
+        <div class="form-row">
+          <label>Location
+            <input type="text" name="location" value="" maxlength="150" placeholder="e.g. Library, Block G" required>
+          </label>
+          <label>Date lost / found
+            <input type="date" name="item_date" id="date" required>
+          </label>
+        </div>
+        <label>Photograph (JPG, PNG, GIF or WEBP · max 5 MB)
+          <input type="file" name="photo" id="photo" accept=".jpg,.jpeg,.png,.gif,.webp,image/*" required>
+          <span id="photo-error" class="field-error" role="alert" hidden></span>
+          <img id="preview" class="file-preview" alt="Photo preview" hidden>
+        </label>
+        <ul class="rules-note">
+          <li>The photograph must be <strong>5 MB or smaller</strong> and a real JPG, PNG, GIF or WEBP image.</li>
+          <li>Item name: at least 3 characters. Description: at least 10 characters.</li>
+          <li>The date cannot be in the future, and the same report cannot be submitted twice.</li>
+        </ul>
+        <button class="button button-primary button-full" id="submit-btn" type="submit">Submit report</button>
+        <div class="privacy-note"><svg class="ic" width="15" height="15"><use href="#i-shield"/></svg> Your email is shown on your report so the owner or finder can contact you. Your admission number is never shown publicly.</div>
+      </form>
+</div>
+
+</main>
+
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div><strong>The Lost Box</strong><p>Reuniting Bennett University students with their belongings.</p></div>
+    <span>Bennett University · Campus project · SDG 12: Responsible Consumption</span>
+  </div>
+</footer>
+
+<script src="js/config.js"></script>
+<script src="js/common.js"></script>
+<script src="js/store.js"></script>
+<script src="js/report.js"></script>
+</body>
+</html>
